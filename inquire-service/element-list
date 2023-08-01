@@ -1,0 +1,11 @@
+com.example.inquire
+com.example.inquire.config
+com.example.inquire.controller
+com.example.inquire.model
+com.example.inquire.service
+com.example.inquire.util
+com.example.products
+com.example.products.contoller
+com.example.products.model
+com.example.products.repository
+com.example.products.service
