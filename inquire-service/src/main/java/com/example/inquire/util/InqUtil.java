@@ -17,8 +17,6 @@ public class InqUtil {
     public static final String DOWNSTREAM_INTERFACE_CALL = "productservice";
     @Autowired
     RestTemplate restTemplate;
-
-    //    @Retry(name = DOWNSTREAM_INTERFACE_CALL, fallbackMethod = "callFallBack")
     @CircuitBreaker(name = DOWNSTREAM_INTERFACE_CALL, fallbackMethod = "callFallBack")
     public List<Product> productByProductService() {
         return restTemplate.getForObject("http://localhost:8086/products", List.class);
@@ -27,7 +25,7 @@ public class InqUtil {
     public List<Product> callFallBack(Throwable throwable) {
         log.error(throwable.getMessage());
         log.info("FallBack Method Called");
-        return Arrays.asList((new Product(1, "Dummy_product")));
+        return List.of((new Product(1, "Dummy_product")));
     }
 
 
